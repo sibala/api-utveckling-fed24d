@@ -28,7 +28,6 @@ app.listen(PORT, () => {
 })
 
 
-
 // ## Exercise 02-express-intro
 // - Add a new GET endpoint "/posts" that returns a list of posts
 // - The posts should be an instance of the Post class (modules/Post.ts) with the following properties
