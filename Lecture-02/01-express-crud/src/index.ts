@@ -76,7 +76,7 @@ app.use(express.json()); // This specific middleware parses JSON string to Javas
 app.post('/todos', (req: Request, res: Response) => {
   const content = req.body.content;
   if (content === undefined) {
-    res.json({error: 'Content is required'}) 
+    res.status(400).json({error: 'Content is required'}) 
     return; 
   }
   // const todoExists = todos.find((t) => t.content === content)
@@ -90,6 +90,28 @@ app.post('/todos', (req: Request, res: Response) => {
   todos.push(newTodo);
   
   res.status(201).json({message: 'Todo created', data: newTodo})
+})
+
+
+// Update todo
+app.patch('/todos/:id', (req: Request, res: Response) => {
+  // const content = req.body.content;
+  // const done = req.body.done;
+  const {content, done} = req.body // Destructur JS Object
+  if (content === undefined || done === undefined) {
+    res.status(400).json({error: 'Content and Done are required'})
+    return
+  }
+
+  const todo = todos.find((t) => t.id === parseInt(req.params.id))
+  if (!todo) {
+    res.status(404).json({error: 'Todo not found'})
+    return;
+  }
+  
+  todo.content = content;
+  todo.done = done;
+  res.json({message: 'Todo updated', data: todo})
 })
 
 
