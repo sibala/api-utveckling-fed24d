@@ -1,7 +1,7 @@
 # Exercises
 
 ## Exercise 01-express-refactored
-- Refactor your Post-API til routes and controllers, liek we did in the lesson
+- Refactor your Post-API til routes and controllers, like we did in the lesson
 
 
 ## Exercise 02-client-with-errorhandling
