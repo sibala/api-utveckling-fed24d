@@ -4,10 +4,10 @@ export class Todo {
   done: boolean = false;
   date: string = "";
   
-  constructor (content: string) {
+  constructor (content: string, done: boolean = false) {
     this.id = Math.round(Math.random() * 1000);
     this.content = content;
-    this.done = false;
+    this.done = done;
     this.date = (new Date()).toString() ;
   }
 }

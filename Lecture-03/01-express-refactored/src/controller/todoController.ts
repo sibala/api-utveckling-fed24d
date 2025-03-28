@@ -4,9 +4,9 @@ import { Todo } from "../models/Todo";
 const todos: Todo[] = [
   new Todo('AAA'),
   new Todo('BBB'),
-  new Todo('CCC'),
+  new Todo('CCC', true),
   new Todo('Handla mat'),
-  new Todo('Käka mat'),
+  new Todo('Käka mat', true),
   new Todo('Diska'),
   new Todo('Diska'),
 ]
@@ -55,7 +55,7 @@ export const fetchTodo = (req: Request, res: Response) => {
   const id = req.params.id
   const todo = todos.find((t) => t.id === parseInt(id))
 
-  res.json({todo})
+  res.json(todo)
 }
 
 export const createTodo = (req: Request, res: Response) => {
