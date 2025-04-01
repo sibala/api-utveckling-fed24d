@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Todo } from "../models/Todo";
 import { db } from "../config/db";
-import { RowDataPacket } from "mysql2";
+import { ResultSetHeader, RowDataPacket } from "mysql2";
 import { ITodo } from "../models/ITodo";
 
 const todos: Todo[] = [
@@ -78,54 +78,66 @@ export const fetchTodo = async (req: Request, res: Response) => {
   }
 }
 
-export const createTodo = (req: Request, res: Response) => {
+export const createTodo = async (req: Request, res: Response) => {
   const content = req.body.content;
   if (content === undefined) {
     res.status(400).json({error: 'Content is required'}) 
     return; 
   }
-  // const todoExists = todos.find((t) => t.content === content)
-  // if (todoExists) {
-  //   res.json({message: 'Todo exisits already. Please create antoher todo'})  
-  //   return;
-  // }
-  // console.log(todoExists)
 
-  const newTodo = new Todo(content) // content = "Släng soporna"
-  todos.push(newTodo);
+  try {
+    const sql = `
+      INSERT INTO todos (content)
+      VALUES (?)
+    `
+    const [result] = await db.query<ResultSetHeader>(sql, [content])
+    res.status(201).json({message: 'Todo created', id: result.insertId})
+  } catch (error: unknown) {
+    const message = error  instanceof Error ? error.message : 'Unknown error'
+    res.status(500).json({error: message})
+  }
   
-  res.status(201).json({message: 'Todo created', data: newTodo})
 }
+
+/**
+ * Part of the exercise to figure updateTodo out on your own
+ */
 
 export const updateTodo = (req: Request, res: Response) => {
-  // const content = req.body.content;
-  // const done = req.body.done;
-  const {content, done} = req.body // Destructur JS Object
-  if (content === undefined || done === undefined) {
-    res.status(400).json({error: 'Content and Done are required'})
-    return
-  }
+  // const {content, done} = req.body // Destructur JS Object
+  // if (content === undefined || done === undefined) {
+  //   res.status(400).json({error: 'Content and Done are required'})
+  //   return
+  // }
 
-  const todo = todos.find((t) => t.id === parseInt(req.params.id))
-  if (!todo) {
-    res.status(404).json({error: 'Todo not found'})
-    return;
-  }
+  // const todo = todos.find((t) => t.id === parseInt(req.params.id))
+  // if (!todo) {
+  //   res.status(404).json({error: 'Todo not found'})
+  //   return;
+  // }
   
-  todo.content = content;
-  todo.done = done;
-  res.json({message: 'Todo updated', data: todo})
+  // todo.content = content;
+  // todo.done = done;
+  // res.json({message: 'Todo updated', data: todo})
 }
 
-export const deleteTodo = (req: Request, res: Response) => {
+
+export const deleteTodo = async (req: Request, res: Response) => {
   const id = req.params.id
 
-  const todoIndex = todos.findIndex((t) => t.id === parseInt(id)) 
-  if (todoIndex === -1) {
-    res.status(404).json({error: 'Todo not found'})
-    return;
+  try {
+    const sql = `
+      DELETE FROM todos
+      WHERE id = ?
+    `
+    const [result] = await db.query<ResultSetHeader>(sql, [id])
+    if (result.affectedRows === 0) {
+      res.status(404).json({message: 'Todo not found'})
+      return;
+    }
+    res.json({message: 'Todo deleted'})
+  } catch (error: unknown) {
+    const message = error  instanceof Error ? error.message : 'Unknown error'
+    res.status(500).json({error: message})
   }
-
-  todos.splice(todoIndex, 1)
-  res.json({message: 'Todo deleted'})
 }
