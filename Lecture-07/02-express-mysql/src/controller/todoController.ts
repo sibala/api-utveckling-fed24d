@@ -14,6 +14,10 @@ const todos: Todo[] = [
   new Todo('Diska'),
 ]
 
+
+/**
+ * Part of the exercise to figure search and sort functionality out on your own
+ */
 export const fetchAllTodos = async (req: Request, res: Response) => {
   // const search = req.query.search
   // const sort = req.query.sort
