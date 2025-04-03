@@ -13,10 +13,11 @@
 
 ## 3. Extend the Post-API, work with SQL Joins 
 - Extend the SQL query for fetching specific post, by adding a JOIN between "posts" and "comments".
-- The expected retrieved data is a post with all associated comments to a specific post
-- Example on retrieved data from a specific post:
+- The expected retrieved data is a post with all associated comments to a specific post. Se example below:
 
- - [GET]    http://localhost:3000/posts/:id
+<br />
+
+[GET]    http://localhost:3000/posts/:id
 ---
 >Response JSON Body:
 ``` 
