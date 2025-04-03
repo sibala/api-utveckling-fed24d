@@ -45,3 +45,7 @@
   ]
 }
 ``` 
+
+
+## 4. Extend the Post Client [Extra exercise]
+- Display the comments on the page for specific posts
