@@ -15,7 +15,7 @@
     <form id="todo-form" class="row g-3 flex justify-content-end">
       <div class="col-md-3">
         <!-- Bygg klart Sök funktionen. Se hur sorteringen löstes och följ samma tillvägagångsätt -->
-        <input type="text" class="form-control" id="search" placeholder="Search" name="search">
+        <input type="text" class="form-control" id="search" placeholder="Search" name="search" onkeyup="fetchTodos(event)">
       </div>
       <div class="col-md-2">
         <select id="inputState" class="form-select" id="sort" name="sort" onchange="fetchTodos(event)">

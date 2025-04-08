@@ -71,8 +71,4 @@ const fetchTodos = async (e) => {
 
 fetchTodos();
 
-
-
-
-
 console.log('This will execute before all other console.logs. Thats because the Fetch is an asynchronous operation')
