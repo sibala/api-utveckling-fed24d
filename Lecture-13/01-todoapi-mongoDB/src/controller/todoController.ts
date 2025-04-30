@@ -4,12 +4,50 @@ import { db } from "../config/db";
 import { ResultSetHeader, RowDataPacket } from "mysql2";
 import { ITodo } from "../models/ITodo";
 
+const todos: Todo[] = [
+  new Todo('AAA'),
+  new Todo('BBB'),
+  new Todo('CCC', true),
+  new Todo('Handla mat'),
+  new Todo('Käka mat', true),
+  new Todo('Diska'),
+  new Todo('Diska'),
+]
 
+
+/**
+ * Part of the exercise to figure search and sort functionality out on your own
+ */
 export const fetchAllTodos = async (req: Request, res: Response) => {
   // const search = req.query.search
   // const sort = req.query.sort
   // let filteredTodos = todos;
 
+  //   if (search) {
+  //     filteredTodos = filteredTodos.filter((t) => t.content.includes(search.toString()))
+  //   }
+    
+  //   if (sort && sort === "asc") {
+  //     filteredTodos = filteredTodos.sort((a, b) => {
+  //       const todo1 = a.content.toLowerCase()
+  //       const todo2 = b.content.toLowerCase()
+
+  //       if (todo1 > todo2) return 1
+  //       if (todo1 < todo2) return -1
+  //       return 0
+  //     })
+  //   }
+
+  //   if (sort && sort === "desc") {
+  //     filteredTodos = filteredTodos.sort((a, b) => {
+  //       const todo1 = a.content.toLowerCase()
+  //       const todo2 = b.content.toLowerCase()
+
+  //       if (todo1 < todo2) return 1
+  //       if (todo1 > todo2) return -1
+  //       return 0
+  //     })
+  //   }
 
 
   try {
@@ -65,6 +103,9 @@ export const createTodo = async (req: Request, res: Response) => {
   
 }
 
+/**
+ * Part of the exercise to figure updateTodo out on your own
+ */
 
 export const updateTodo = (req: Request, res: Response) => {
   // const {content, done} = req.body // Destructur JS Object

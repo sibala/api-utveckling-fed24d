@@ -31,10 +31,6 @@ const fetchPosts = async (e) => {
               id
               title
               author
-              comments {
-                content
-                author
-              }
             }
           }
         `
