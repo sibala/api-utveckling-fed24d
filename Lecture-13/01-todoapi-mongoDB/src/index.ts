@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import express from 'express';
 import cors from 'cors'
-import { connectToDatabase } from './config/db';
+import mongoose from 'mongoose';
 
 const app = express();
 
@@ -16,7 +16,8 @@ app.use('/todos', todoRouter)
 
 
 // Connect To DB
-connectToDatabase();
+mongoose.connect(process.env.MONGODB_URL || "");
+
 // Start the express server
 const PORT = 3000
 app.listen(PORT, () => {
