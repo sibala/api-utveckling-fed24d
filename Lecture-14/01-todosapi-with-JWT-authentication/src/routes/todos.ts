@@ -5,12 +5,15 @@ import {
   fetchAllTodos, 
   fetchTodo, 
   updateTodo } from '../controller/todoController';
+import { verifyAccessToken } from '../middleware/verifyToken';
 const router = express.Router()
 
 router.get('/', fetchAllTodos)
 router.get('/:id', fetchTodo)
-router.post('/', createTodo)
-router.patch('/:id', updateTodo)
-router.delete('/:id', deleteTodo)
+
+// The 3 endpoints below are protected
+router.post('/', verifyAccessToken, createTodo)
+router.patch('/:id',verifyAccessToken, updateTodo)
+router.delete('/:id',verifyAccessToken, deleteTodo)
 
 export default router;
