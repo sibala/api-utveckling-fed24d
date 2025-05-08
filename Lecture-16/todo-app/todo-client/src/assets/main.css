@@ -72,6 +72,6 @@ header .wrapper {
 }
 #todo-search input, #todo-search button {
   padding: 8px;
-  border: 1px solid #333;
+  border: 1px solid #bbb;
   border-radius: 5px;
 }
