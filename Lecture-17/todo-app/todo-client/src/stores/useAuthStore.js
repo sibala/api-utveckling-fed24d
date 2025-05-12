@@ -4,15 +4,15 @@ const useAuthStore = defineStore('auth', {
   state: () => ({ isAuthenticated: false }),
   actions: {
     async login() {
-      // LOGIN Fetch-reguest 
+      // LOGIN Fetch-request 
       this.isAuthenticated = true
     },
     logout() { 
-      // LOGoUT Fetch-reguest 
+      // LOGoUT Fetch-request 
       this.isAuthenticated = false
     },
     register() {
-      // REGISTER Fetch-reguest 
+      // REGISTER Fetch-request 
     }
   }
 })
