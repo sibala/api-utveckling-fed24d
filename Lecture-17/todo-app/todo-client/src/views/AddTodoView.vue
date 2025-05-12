@@ -14,7 +14,7 @@
     try {
       await fetch(API_URL + '/todos', {
         method: "POST",
-        credentials: 'include',
+        credentials: 'include', // This enables cookie handling
         headers: {
           "Content-Type": "application/json"
         },
