@@ -14,6 +14,7 @@
     try {
       await fetch(API_URL + '/todos', {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json"
         },
