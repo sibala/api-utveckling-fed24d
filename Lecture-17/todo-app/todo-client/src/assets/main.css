@@ -1,0 +1,117 @@
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+.lightgray-bg {
+  background-color: rgb(243, 243, 243);
+}
+
+header #top-header {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+header #main-header {
+  display: flex;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
+}
+
+.logo {
+  margin: 0 20px 0 0;
+}
+
+header #main-header .wrapper {
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
+}
+
+#add-todo {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 20px;
+}
+
+#todos {
+  margin-top: 20px;
+}
+
+#todos article {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.view-link {
+  display: block;
+  margin-left: auto;
+}
+
+.date {
+  display: block;
+  color: #999;
+}
+
+.done {
+  text-decoration: line-through;
+}
+#todo-search {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+#todo-search input, #todo-search button {
+  padding: 8px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+#header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#todo-form,
+#login-form {
+  margin: 20px 0 ;
+}
+
+#todo-form > input, 
+#todo-form > button,
+#login-form > input, 
+#login-form > button
+{
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.form-row {
+  display: flex;
+  margin: 10px 0;
+  gap: 5px;
+}
